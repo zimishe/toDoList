@@ -2,6 +2,7 @@
   "name": "toDoList.loc",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zimishe.github.io/toDoList/build",
   "devDependencies": {
     "react-scripts": "0.9.0"
   },
