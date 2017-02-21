@@ -9,21 +9,20 @@ class App extends Component {
     render() {
         let addedItems = this.props.data.addedItems;
         
-        console.log('tt', addedItems);
+        // console.log('items', addedItems);
         
         return (
             <div className="container">
                 <div className="todo">
-                    <p>To do app</p>
+                    <h2>To do app</h2>
                     <div className="todo__list">
                         <AddField />
                         <div className="todo__list__items">
                             {
                                 addedItems.map(
-                                    (el, i) => <ToDoItem key={i} id={el.id} text={el.text} />
+                                    (el, i) => <ToDoItem key={i} id={i} text={el.text} />
                                 )
                             }
-                            
                         </div>
                     </div>
                 </div>

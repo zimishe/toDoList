@@ -7,297 +7,153 @@ body {
     text-align: center;
 }
 
-.weather-info {
-    display: flex;
-    flex-wrap: wrap;
-    //align-items: center;
-    justify-content: flex-start;
-    margin: 0 -16px;
+.todo {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px 0;
     
-    &__item {
-        margin: 16px;
+    &__list {
         display: flex;
         flex-wrap: wrap;
-        flex-basis: calc(33.333% - 32px);
-        background: #fff;
-        box-shadow: 0 2px 50px rgba(63, 81, 181, 0.16);
-        border-radius: 5px; 
+    }
+    
+    &__add {
+        position: relative;
+        display: flex;
+        flex-basis: 100%;
         
-        &__header {
-            display: flex;
-            align-items: center;
-            flex-basis: 100%;
-            padding: 10px;
-            background-color: #3f51b5;
-            border-radius: 5px 5px 0 0;
+        input {
+            width: 100%;
+            height: 40px;
+            background: #fff;
+            padding: 5px 10px;
+            font: rem(15px, 18px) $gotham-light;
+            color: #000;
         }
         
-        &__icon {
-            display: flex;
-            flex-basis: 30%;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 0;
-        }
-        
-        &__date {
-            display: flex;
-            flex-wrap: wrap;
-            flex-basis: 70%;
+        .add-item {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 76px;
+            height: 40px;
+            background: #ccc;
+            font: rem(15px, 15px) $gotham-bold;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            padding: 0 10px;
+            transition: all .2s ease;
             
-            h4 {
-                font: rem(20px, 17px) $gotham-bold;
+            &:hover {
+                background: #000;
                 color: #fff;
-                text-align: left;
-                
-                &:nth-of-type(1) {
-                    margin-bottom: 10px;
-                }
             }
+        }
+    }
+    
+    &__list {
+        &__items {
+            display: flex;
+            flex-basis: 100%;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+    }
+    
+    &__item {
+        display: flex;
+        flex-basis: 100%;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #9CCC65;
+        border-top: 1px solid #9CCC65;
+        border-left: 4px solid #9CCC65;
+        position: relative;
+        height: 40px;
+        margin-bottom: 10px;
+        
+        &__number {
+            height: 40px;
+            width: 40px;
+            border-right: 1px solid #9CCC65;
             
             p {
-                font: rem(14px, 20px) $gotham-book;
-                color: #fff;
-                opacity: .5;
+                font: rem(14px, 40px) $gotham-book;
+                color: #000;
             }
         }
         
         &__text {
-            flex-basis: 100%;
-            padding: 20px 30px 0 30px;
-        }
-        
-        &__bottom {
-            display: flex;
-            flex-basis: 100%;
-            align-items: center;
-            border-top: 1px solid #e2e7ed;
-            margin: 0 20px;
-            padding: 20px 0;
-            
-        }
-        
-        .description {
-            p {
-                font: rem(13px, 14px) $gotham-book;
-                color: #a0b0b9;
-                text-align: left;
-            }
-        }
-        
-        &__icons {
-            flex-basis: 100%;
-        }
-        
-        &__temps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+            padding-left: 10px;
             
             p {
-                flex-basis: 100%;
-                display: flex;
-                font: rem(25px, 23px) $gotham-bold;
-                padding: 15px 0 5px;
-                color: #000;
-                
-                sup {
-                    font: rem(15px, 15px) $gotham-bold;
-                    line-height: 10px;
-                    padding-left: 3px;
-                }
-                
-                span {
-                    font: rem(19px, 25px) $gotham-book;
-                    vertical-align: bottom;
-                    padding: 0 10px;
-                }
-            }
-            
-            .temp {
-                &--min,
-                &--max {
-                    display: flex;
-                    
-                    p {
-                        text-align: left;
-                    }
-                }
-            }
-        }
-        
-        &__humidity {
-            display: flex;
-            flex-basis: 40%;
-            align-items: center;
-            
-            p {
-                font: rem(17px, 18px) $gotham-book;
+                font: rem(14px, 16px) $gotham-bold;
                 color: #000;
                 text-align: left;
-                padding-left: 7px;
             }
         }
         
-        &__wind {
-            display: flex;
-            flex-basis: 60%;
-            align-items: center;
-            
-            p {
-                font: rem(18px, 20px) $gotham-book;
-                color: #000;
-                padding-left: 7px;
-            }
-            
-            .wind-direction {
-                width: 26px;
-                height: 26px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #57a4ff;
-                margin-left: 7px;
-                
-                img {
-                    display: flex;
-                    transform-origin: center;
-                    transform: rotate(0deg);
-                    transition: all .5s ease;
-                }
-            }
-        }
-        
-        @include respond-to(xs) {
-            flex-basis: calc(100% - 12px);
-            margin: 10px;
-        }
-    }
-}
-
-.items-to-show {
-    display: flex;
-    flex-basis: 100%;
-    margin: 20px 0;
-    justify-content: flex-end;
-    align-items: center;
-    
-    h4 {
-        font: rem(16px, 18px) $gotham-bold;
-        color: #000;
-        padding-right: 15px;
-    }
-    
-    ul {
-        display: flex;
-        align-items: center;
-        
-        li {
+        &__remove {
+            position: absolute;
+            right: 0;
+            top: -1px;
+            width: 40px;
+            height: 40px;
             padding: 0 10px;
+            background: #FFAB91;
+            transition: all .2s ease;
+            cursor: pointer;
+            font: rem(14px, 16px) $bold;
+            color: #000;
 
-            a {
-                font: rem(14px, 25px) $gotham-bold;
-                color: #232323;
-                text-decoration: underline;
-
-                &:hover {
-                    text-decoration: none;
-                    color: navy;
-                }
+            &:before {
+                transform: rotate(45deg);
             }
-        }   
-    }
-}
 
-.header {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 30px 0 0;
-    
-    &__info {
-        margin-bottom: 20px;
-        
-        p {
-            font: rem(14px, 17px) $gotham-light;
-            color: #59595c;
-        }    
-        
-        strong {
-            margin-left: 10px;
-            font: rem(15px, 17px) $gotham-bold;
-            color: #3f51b5;
-            border-bottom: 1px dashed #3f51b5;
-        }
-    }
-    
-    &__city-select {
-        li {
-            display: inline-block;
+            &:after {
+                transform: rotate(-45deg);
+            }
             
-            a {
+            &:before,
+            &:after {
+                content: '';
+                width: 24px;
+                height: 2px;
+                background: #000;
                 display: block;
-                font: rem(15px, 42px) $gotham-bold;
-                color: #3f51b5;
-                margin: 0 10px;
-                padding: 0 40px;
+                position: absolute;
+                left: 8px;
+                top: 19px;
                 transition: all .2s ease;
-                position: relative;
-                overflow: hidden;
-                height: 41px;
-                box-shadow: 0 2px 50px rgba(63, 81, 181, 0.16);
-                border-radius: 20px;
-                background-color: #ffffff;
+            }
+            
+            &:hover {
+                background: #FF8A65;
+                
+                &:before,
+                &:after {
+                    background: #fff;
+                }
                 
                 &:before {
-                    content: attr(data-caption);
-                    position: absolute;
-                    left: 0;
-                    bottom: -100%;
-                    width: 100%;
-                    height: 100%;
-                    background: #3f51b5;
-                    border-radius: 20px;
-                    transition: all .2s ease-out;
-                    font: rem(15px, 42px) $gotham-bold;
+                    transform: rotate(-45deg);    
                 }
-                
-                &:hover {
-                    color: #558b2f;
-                    
-                    &:before {
-                        bottom: 0;
-                        visibility: visible;
-                        color: #fff;
-                    }
-                }
-            }
-            
-            &:nth-last-of-type(1) {
-                a {
-                    margin-right: 0;
-                }
-            }
-        }
-        
-        @include respond-to(xs) {
-            display: flex;
-            flex-wrap: wrap;
-            
-            li {
-                margin: 5px 0;
-                display: flex;
-                flex-basis: 100%;
-                
-                a {
-                    display: block;
-                    width: 100%;
-                    margin: 0;
+
+                &:after {
+                    transform: rotate(45deg);
                 }
             }
         }
     }
+}
+
+h2 {
+    font: rem(20px, 22px) $gotham-bold;
+    color: #232323;
+    padding-bottom: 10px;
 }
 
 

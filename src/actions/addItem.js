@@ -2,8 +2,8 @@
  * Created by eugene on 20.02.17.
  */
 
-export function addItem(textValue) {
+export function addItem(addedItems) {
     return {
-        type: 'ADDED_ITEM', text: textValue
+        type: 'ADDED_ITEM', addedItems: addedItems
     }
 }
