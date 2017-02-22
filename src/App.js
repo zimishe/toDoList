@@ -6,6 +6,12 @@ import { connect } from 'react-redux'
 import store from './store'
 
 class App extends Component {
+    componentDidUpdate() {
+        let dataToWrite = JSON.stringify(this.props.data.addedItems);
+        
+        localStorage.setItem('todoItems', dataToWrite);
+    }
+    
     render() {
         let addedItems = this.props.data.addedItems;
         
